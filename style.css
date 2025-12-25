@@ -52,13 +52,15 @@ p {
   border-radius: 4px;
 }
 
+/* --- System Architecture --- */
+
 .system {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 40px;
-  margin: 120px 0;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 56px;
+  padding-top: 64px;
+  border-top: 1px solid #e5e5e5;
 }
-
 .system h2 {
   margin-bottom: 8px;
 }
