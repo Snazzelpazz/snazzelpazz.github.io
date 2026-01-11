@@ -2,12 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Allpath – A Cognitive Operating System</title>
+  <title>Allpath – Cognitive OS for Humans Under Pressure</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Allpath is a cognitive operating system for humans under pressure, designed to stabilize judgment under stress and uncertainty."
-  />
+  <meta name="description" content="Allpath is a cognitive operating system for humans under pressure, designed to stabilize clarity and decision-making in complex, high-stakes environments." />
   <style>
     :root {
       --bg: #050509;
@@ -17,17 +14,13 @@
       --text: #f5f5f7;
       --muted: #9b9ba6;
       --border-subtle: #242434;
-      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
       --max-width: 900px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       background: radial-gradient(circle at top, #151527 0, #050509 55%);
@@ -36,10 +29,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    body {
-      display: flex;
-      justify-content: center;
-    }
+    body { display: flex; justify-content: center; }
 
     main {
       width: 100%;
@@ -48,14 +38,10 @@
     }
 
     @media (min-width: 768px) {
-      main {
-        padding: 60px 20px 100px;
-      }
+      main { padding: 60px 20px 100px; }
     }
 
-    section {
-      margin-bottom: 56px;
-    }
+    section { margin-bottom: 56px; }
 
     .section-label {
       font-size: 12px;
@@ -65,10 +51,7 @@
       margin-bottom: 12px;
     }
 
-    h1,
-    h2,
-    h3,
-    h4 {
+    h1, h2, h3, h4 {
       margin: 0;
       font-weight: 600;
       letter-spacing: -0.02em;
@@ -80,15 +63,7 @@
       margin-bottom: 12px;
     }
 
-    h2 {
-      font-size: 24px;
-      margin-bottom: 16px;
-    }
-
-    h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
+    h2 { font-size: 24px; margin-bottom: 16px; }
 
     p {
       margin: 0 0 10px;
@@ -97,18 +72,10 @@
       font-size: 15px;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .hero {
-      margin-bottom: 64px;
-    }
+    .hero { margin-bottom: 64px; }
 
     .eyebrow {
       display: inline-flex;
@@ -134,9 +101,9 @@
     }
 
     .hero-subtitle {
-      font-size: 16px;
+      font-size: 18px;
       max-width: 600px;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
 
     .hero-tagline {
@@ -163,22 +130,19 @@
       border: 1px solid transparent;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease,
-        transform 0.1s ease;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
       white-space: nowrap;
     }
 
     .btn-primary {
       background: linear-gradient(135deg, #f5b64c, #f58a4c);
       color: #1b140a;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6),
-        0 0 26px rgba(245, 182, 76, 0.25);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 26px rgba(245, 182, 76, 0.25);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7),
-        0 0 32px rgba(245, 182, 76, 0.35);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7), 0 0 32px rgba(245, 182, 76, 0.35);
     }
 
     .btn-secondary {
@@ -192,21 +156,10 @@
       background: rgba(10, 10, 20, 0.95);
     }
 
-    .muted {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
 
     @media (min-width: 768px) {
-      .grid-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     .card {
@@ -215,85 +168,6 @@
       border: 1px solid var(--border-subtle);
       background: linear-gradient(145deg, #080811, #050509);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-    }
-
-    .card-inline {
-      padding: 14px 14px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(12, 12, 22, 0.95);
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 4px 9px;
-      border-radius: 999px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      border: 1px solid var(--border-subtle);
-      color: var(--muted);
-      margin-bottom: 8px;
-      background: rgba(5, 5, 12, 0.9);
-    }
-
-    .badge-accent {
-      border-color: var(--accent-soft);
-      background: rgba(245, 182, 76, 0.06);
-      color: var(--accent);
-    }
-
-    ul {
-      margin: 6px 0 0;
-      padding-left: 16px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    ul li {
-      margin-bottom: 4px;
-    }
-
-    .quote {
-      margin-top: 12px;
-      padding-left: 14px;
-      border-left: 2px solid var(--accent-soft);
-      font-size: 14px;
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    .subsystem-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-
-    @media (min-width: 900px) {
-      .subsystem-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    .subsystem-header {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      margin-bottom: 6px;
-    }
-
-    .subsystem-name {
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .subsystem-role {
-      font-size: 13px;
-      color: var(--muted);
     }
 
     .footer {
@@ -308,328 +182,239 @@
       justify-content: space-between;
       gap: 8px;
     }
-
-    .footer a {
-      font-size: 12px;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .pill {
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      font-size: 11px;
-      color: var(--muted);
-      background: rgba(8, 8, 16, 0.9);
-    }
-
-    .highlight {
-      color: var(--accent);
-    }
   </style>
 </head>
+
 <body>
   <main>
-    <!-- Hero -->
+
+    <!-- HERO -->
     <section class="hero" id="top">
       <div class="eyebrow">
         <span class="eyebrow-dot"></span>
-        <span>Cognitive operating system</span>
+        <span>Cognitive OS</span>
       </div>
+
       <h1>Allpath</h1>
-      <p class="hero-subtitle">
-        A cognitive operating system for humans under pressure.
-      </p>
+      <p class="hero-subtitle">Cognitive OS for humans under pressure.</p>
+
       <p class="hero-tagline">
-        For people who make decisions when the stakes are high, the data is
-        incomplete, and the clock is running. Allpath stabilizes the human side
-        of the equation so judgment stays clear when conditions are anything but.
+        In today’s fast-paced environment, constant noise, uncertainty, and AI-driven complexity distort human judgment. Allpath provides a stable cognitive operating system for making clear decisions when the stakes are high.
       </p>
+
       <div class="hero-actions">
-        <a href="#deck" class="btn btn-primary">View pitch deck</a>
-        <a href="#contact" class="btn btn-secondary">Request a conversation</a>
+        <a href="Allpath Cognitive OS.pdf" class="btn btn-primary" target="_blank" rel="noopener">
+          View Pitch Deck (PDF)
+        </a>
+        <a href="#contact" class="btn btn-secondary">Early Adopter & Inquiries</a>
       </div>
     </section>
 
-    <!-- Why Allpath exists -->
-    <section id="why">
-      <div class="section-label">Why Allpath exists</div>
+    <!-- PROBLEM -->
+    <section id="problem">
+      <div class="section-label">The Problem</div>
       <div class="grid grid-2">
         <div>
-          <h2>The clarity problem in modern work</h2>
+          <h2>Judgment under pressure is breaking</h2>
           <p>
-            Modern work has given us more information, more tools, and more
-            automation — but not more clarity.
+            Noise and uncertainty distort perception. AI adds complexity faster than humans can adapt. High-stakes decisions are being made inside unstable cognitive conditions.
           </p>
-          <ul>
-            <li><strong>Stress distorts judgment.</strong> Under pressure, even experienced operators misread signals, overcorrect, or freeze.</li>
-            <li><strong>Uncertainty is the new default.</strong> Data is noisy, models disagree, and the “right” move is rarely obvious.</li>
-            <li><strong>AI accelerates everything.</strong> We can generate more options than ever, but not more grounded decisions.</li>
-          </ul>
+          <p>
+            Stress, urgency, and conflicting signals make clarity difficult at the exact moments where clarity matters most.
+          </p>
         </div>
         <div class="card">
           <p>
-            Most solutions try to calm people down, speed them up, or give them
-            more dashboards.
+            The result: overreaction, hesitation, decision fatigue, and misalignment.
           </p>
           <p>
-            Allpath does something different: it gives human decision-makers a
-            <span class="highlight">stable cognitive environment</span>
-            to think inside.
+            Allpath exists to stabilize that environment.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- What Allpath is -->
+    <!-- OPPORTUNITY -->
+    <section id="opportunity">
+      <div class="section-label">The Opportunity</div>
+      <div class="grid grid-2">
+        <div>
+          <h2>Cognitive clarity as infrastructure</h2>
+          <p>
+            Organizations need a reliable way to improve decision quality, reduce overload, and stabilize teams under pressure.
+          </p>
+          <p>
+            Allpath treats human clarity and judgment as first-class infrastructure — not a side effect of “trying harder.”
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            In a world shaped by AI and accelerating complexity, cognitive clarity is becoming essential infrastructure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT ALLPATH IS -->
     <section id="what">
-      <div class="section-label">What Allpath is</div>
+      <div class="section-label">What Allpath Is</div>
       <div class="grid grid-2">
         <div>
-          <h2>A cognitive operating system</h2>
+          <h2>A cognitive OS for humans under pressure</h2>
           <p>
-            Allpath is a <strong>cognitive operating system</strong> designed
-            for humans making hard calls.
-          </p>
-          <p>
-            It runs as a structured, repeatable layer around your thinking —
-            not as a replacement for your judgment. You keep agency. Allpath
-            keeps the environment stable, the distortions visible, and the
-            next step navigable.
-          </p>
-          <p>
-            At its core, Allpath works through three coordinated subsystems:
-            <span class="highlight">Angel</span>,
-            <span class="highlight">Devil</span>, and
-            <span class="highlight">Mariner</span>.
+            Allpath enhances clarity and decision-making under pressure by providing a stable, repeatable structure for navigating complex challenges.
           </p>
         </div>
         <div class="card">
-          <p><strong>Angel</strong> — anchors you in what is actually happening.</p>
-          <p><strong>Devil</strong> — hunts for distortions, blind spots, and self-sabotage.</p>
-          <p><strong>Mariner</strong> — charts the way forward through uncertainty.</p>
           <p>
-            Together, they form a closed-loop system for
-            <span class="highlight">staying clear-headed under load</span>.
+            Instead of asking people to “rise to the occasion,” Allpath creates a thinking environment where clarity becomes more likely — even when conditions are not.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Subsystems -->
+    <!-- SUBSYSTEMS -->
     <section id="subsystems">
-      <div class="section-label">The three subsystems</div>
-      <div class="subsystem-grid">
-        <!-- Angel -->
+      <div class="section-label">The Three Subsystems</div>
+      <div class="grid grid-2">
         <div class="card">
-          <div class="subsystem-header">
-            <div class="subsystem-name">Angel</div>
-            <div class="subsystem-role">Grounding signal</div>
-          </div>
+          <h3>Angel — Staying Grounded</h3>
           <p>
-            <strong>Role:</strong> Keep you tethered to reality when stress,
-            urgency, or emotion want to pull you off-center.
-          </p>
-          <p><strong>What Angel does:</strong></p>
-          <ul>
-            <li><strong>Clarifies context:</strong> What is truly at stake, and for whom.</li>
-            <li><strong>Surfaces facts:</strong> What we actually know versus what we’re assuming.</li>
-            <li><strong>Stabilizes perspective:</strong> Keeps the decision anchored to your real constraints and values.</li>
-          </ul>
-          <p>
-            <strong>Outcome:</strong> You stop reacting from noise and start
-            responding from a grounded, coherent frame.
+            Clarifies facts, separates assumptions, and centers individuals under stress. Promotes clarity over panic.
           </p>
         </div>
 
-        <!-- Devil -->
         <div class="card">
-          <div class="subsystem-header">
-            <div class="subsystem-name">Devil</div>
-            <div class="subsystem-role">Distortion detection</div>
-          </div>
+          <h3>Devil — Spotting Distortions</h3>
           <p>
-            <strong>Role:</strong> Expose the ways your own mind will try to
-            trick you when it matters most.
-          </p>
-          <p><strong>What Devil does:</strong></p>
-          <ul>
-            <li><strong>Interrogates narratives:</strong> “What story am I telling myself about this situation?”</li>
-            <li><strong>Flags distortions:</strong> Catastrophizing, wishful thinking, overconfidence, avoidance, and other cognitive patterns.</li>
-            <li><strong>Challenges defaults:</strong> “If I couldn’t do what I always do here, what would I see?”</li>
-          </ul>
-          <p>
-            <strong>Outcome:</strong> You see the hidden leverage in a
-            situation instead of being steered by unexamined bias or fear.
+            Identifies blind spots, challenges narratives, and flags biases. Prevents mental traps and self-sabotage.
           </p>
         </div>
 
-        <!-- Mariner -->
         <div class="card">
-          <div class="subsystem-header">
-            <div class="subsystem-name">Mariner</div>
-            <div class="subsystem-role">Navigation under uncertainty</div>
-          </div>
+          <h3>Mariner — Choosing Direction</h3>
           <p>
-            <strong>Role:</strong> Help you move forward when the map is
-            incomplete and no option is risk-free.
-          </p>
-          <p><strong>What Mariner does:</strong></p>
-          <ul>
-            <li><strong>Charts options:</strong> Lays out clear, named paths instead of a vague cloud of “maybes.”</li>
-            <li><strong>Simulates futures:</strong> Walks each path forward: risks, reversibility, and what you’d need to believe for it to be right.</li>
-            <li><strong>Selects a course:</strong> Aligns choice with your constraints, timing, and appetite for risk — in this specific moment.</li>
-          </ul>
-          <p>
-            <strong>Outcome:</strong> You commit to a path on purpose, not by
-            drift, panic, or overthinking.
+            Lays out options, evaluates consequences, and aligns decisions with goals. Supports purposeful movement in turbulent environments.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- How it works -->
+    <!-- HOW IT WORKS -->
     <section id="how">
-      <div class="section-label">How Allpath works</div>
+      <div class="section-label">How It Works</div>
       <div class="grid grid-2">
         <div>
-          <h2>A structured cognitive environment</h2>
-          <p>
-            Allpath is not a meditation app, a to-do list, or a dashboard.
-            It’s a <strong>structured cognitive environment</strong> you step
-            into when decisions matter.
-          </p>
-          <p>A typical interaction:</p>
+          <h2>A simple 5-step process</h2>
           <ul>
-            <li><strong>1. Enter the situation.</strong> You bring in the decision, constraint, or crisis: what’s happening, what’s at stake, and what timing you’re under.</li>
-            <li><strong>2. Stabilize with Angel.</strong> The system walks you through grounding prompts to separate signal from noise and define the real problem.</li>
-            <li><strong>3. Expose distortions with Devil.</strong> You move through targeted challenges to your assumptions, fears, and preferred narratives.</li>
-            <li><strong>4. Navigate with Mariner.</strong> Possible paths are laid out, explored, and stress-tested. You choose consciously, with eyes open.</li>
-            <li><strong>5. Close the loop.</strong> After execution, Allpath captures what actually happened, feeding back into your personal operating history.</li>
+            <li><strong>1. Enter the situation.</strong> Define what’s happening and what’s at stake.</li>
+            <li><strong>2. Ground with Angel.</strong> Clarify facts and stabilize perspective.</li>
+            <li><strong>3. Expose distortions with Devil.</strong> Surface biases and blind spots.</li>
+            <li><strong>4. Navigate with Mariner.</strong> Explore options and align with goals.</li>
+            <li><strong>5. Close the loop.</strong> Review outcomes to refine future judgment.</li>
           </ul>
         </div>
         <div class="card">
           <p>
-            The result is not perfection. It’s something rarer: a
-            <span class="highlight">repeatable way to stay sane and sharp under pressure</span>.
-          </p>
-          <p>
-            Over time, your decisions become more deliberate, less reactive,
-            and easier to review — because the thinking environment itself is
-            no longer chaotic.
+            The goal is not perfection — it’s reliable clarity under load.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Who it's for -->
-    <section id="who">
-      <div class="section-label">Who Allpath is for</div>
+    <!-- AUDIENCE -->
+    <section id="audience">
+      <div class="section-label">Target Audience</div>
       <div class="card">
-        <h2>For people whose decisions carry weight</h2>
+        <h2>Built for humans in chaotic environments</h2>
         <p>
-          Allpath is designed for people who are routinely asked to make hard
-          calls when it’s not clear what’s right, only what’s next.
-        </p>
-        <ul>
-          <li><strong>Founders and executives</strong> steering organizations through volatile conditions.</li>
-          <li><strong>Operators and crisis leads</strong> handling complex incidents or live-fire situations.</li>
-          <li><strong>Knowledge workers in AI-heavy environments</strong> where speed and ambiguity collide.</li>
-          <li><strong>Anyone tasked with holding the line</strong> when everyone else is looking for someone to decide.</li>
-        </ul>
-        <p>
-          If your decisions carry weight, and you can feel the cognitive load
-          of that, Allpath is built for you.
+          Allpath is designed for founders, executives, crisis leads, and knowledge workers in AI-heavy sectors who must make decisions with real consequences under pressure.
         </p>
       </div>
     </section>
 
-    <!-- What changes -->
-    <section id="effects">
-      <div class="section-label">What changes when Allpath is running</div>
+    <!-- BENEFITS -->
+    <section id="benefits">
+      <div class="section-label">Benefits</div>
       <div class="grid grid-2">
         <div>
-          <h2>Downstream effects</h2>
-          <p>When Allpath is integrated into your way of working, you start to notice distinct shifts:</p>
+          <h2>What users experience</h2>
           <ul>
-            <li><strong>Less reactivity, more deliberate action.</strong> You respond from grounded clarity instead of adrenaline or dread.</li>
-            <li><strong>Cleaner postmortems.</strong> Decision quality is trackable because the thinking environment is structured, not chaotic.</li>
-            <li><strong>Reduced cognitive drag.</strong> You spend less energy fighting your own mind and more on the situation itself.</li>
-            <li><strong>Stronger alignment.</strong> Your choices line up with your actual constraints, values, and strategic intent.</li>
+            <li>Reduced reactivity</li>
+            <li>Clearer thinking</li>
+            <li>More confident decisions</li>
+            <li>Better alignment</li>
+            <li>Stronger follow-through</li>
           </ul>
         </div>
         <div class="card">
           <p>
-            The work doesn’t get easier. You just stop doing it alone inside
-            an unstable internal environment.
+            Allpath turns cognitive stability into a repeatable practice.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- About -->
-    <section id="about">
-      <div class="section-label">About the architect</div>
+    <!-- WHY NOW -->
+    <section id="why-now">
+      <div class="section-label">Why Now</div>
       <div class="card">
-        <h2>Designed by a systems architect of human judgment</h2>
+        <h2>The acceleration moment</h2>
         <p>
-          Allpath was created by <strong>Stephen Gregory Dowswell</strong>
-         , a systems architect obsessed with one question:
+          The world is accelerating. Cognitive overload is rising. AI increases complexity faster than humans can adapt.
         </p>
-        <div class="quote">
-          “How do we keep human judgment stable when environments get unstable?”
-        </div>
         <p>
-          His work sits at the intersection of cognitive architecture,
-          behavioral stability, and human–AI coordination. Allpath is the
-          crystallization of years spent designing and ritualizing systems for
-          making hard decisions without burning out, spacing out, or tapping out.
+          Stable judgment is becoming essential infrastructure. Allpath is built for this moment.
         </p>
       </div>
     </section>
 
-    <!-- Engage / Contact -->
+    <!-- VISION -->
+    <section id="vision">
+      <div class="section-label">Vision</div>
+      <div class="card">
+        <h2>Cognitive stability at scale</h2>
+        <p>
+          Allpath aims to create a stable foundation for human judgment in any environment, enabling seamless human–AI co-navigation.
+        </p>
+        <p>
+          The long-term vision is cognitive stability at scale: teams and individuals who maintain clarity even as environments become more complex.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section id="contact">
-      <div class="section-label">Engage</div>
+      <div class="section-label">Get in Touch</div>
       <div class="card">
         <h2>Engage with Allpath</h2>
-        <p>
-          Allpath is currently being developed and refined with a small group
-          of collaborators and early adopters.
+
+        <p><strong>Early Adopter Info</strong><br>
+          <a href="https://snazzelpazz.github.io" target="_blank" rel="noopener">snazzelpazz.github.io</a>
         </p>
-        <p><strong>If you’re:</strong></p>
-        <ul>
-          <li>Exploring cognitive infrastructure for your team or organization</li>
-          <li>Investing in tools for human stability in AI-accelerated environments</li>
-          <li>Responsible for decisions where “we’ll see how it goes” is not good enough</li>
-        </ul>
-        <p><strong>Let’s talk.</strong></p>
-        <div class="hero-actions">
-          <a id="deck" href="#" class="btn btn-primary">View pitch deck</a>
-          <a href="mailto:your-email@example.com" class="btn btn-secondary"
-            >Request a conversation</a
-          >
+
+        <p><strong>Development Inquiries</strong><br>
+          <a href="tel:+19803129121">+1 (980) 312‑9121</a>
+        </p>
+
+        <p><strong>General Contact</strong><br>
+          <a href="mailto:Snazzelpazz@gmail.com">Snazzelpazz@gmail.com</a>
+        </p>
+
+        <div class="hero-actions" style="margin-top: 16px;">
+          <a href="Allpath Cognitive OS.pdf" class="btn btn-primary" target="_blank" rel="noopener">
+            View Pitch Deck (PDF)
+          </a>
         </div>
-        <p class="muted" style="margin-top: 10px;">
-          Replace <code>your-email@example.com</code> with your contact address and
-          wire the “View pitch deck” link to your deck when ready.
-        </p>
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer">
-      <div>Allpath · A cognitive operating system for humans under pressure.</div>
-      <div>
-        <a href="#top">Back to top</a>
-      </div>
+      <div>Cognitive OS for humans under pressure · Allpath.</div>
+      <div><a href="#top">Back to top</a></div>
     </footer>
+
   </main>
 </body>
 </html>
