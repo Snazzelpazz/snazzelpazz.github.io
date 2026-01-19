@@ -1,420 +1,246 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Allpath – Cognitive OS for Humans Under Pressure</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Allpath is a cognitive operating system for humans under pressure, designed to stabilize clarity and decision-making in complex, high-stakes environments." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Snazzelpazz — Canonization</title>
+  <meta name="description" content="Signal → Resonance → Submission → Transformation → Payment. Send a piece. I’ll show you what it can become." />
   <style>
-    :root {
-      --bg: #050509;
-      --bg-alt: #0d0d14;
-      --accent: #f5b64c;
-      --accent-soft: rgba(245, 182, 76, 0.12);
-      --text: #f5f5f7;
-      --muted: #9b9ba6;
-      --border-subtle: #242434;
-      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
-      --max-width: 900px;
+    :root{
+      --bg:#0b0f14; --card:#0f1620; --text:#e8eef6; --muted:#a9b6c6;
+      --line:#223042; --accent:#7c5cff; --accent2:#51c4ff;
     }
-
-    * { box-sizing: border-box; }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: radial-gradient(circle at top, #151527 0, #050509 55%);
-      color: var(--text);
-      font-family: var(--font-sans);
-      -webkit-font-smoothing: antialiased;
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 30% 10%, rgba(124,92,255,.18), transparent 60%),
+                  radial-gradient(900px 700px at 80% 30%, rgba(81,196,255,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.5;
     }
-
-    body { display: flex; justify-content: center; }
-
-    main {
-      width: 100%;
-      max-width: var(--max-width);
-      padding: 40px 20px 80px;
+    .wrap{max-width:980px; margin:0 auto; padding:56px 18px 72px;}
+    .top{
+      display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+      margin-bottom:34px;
     }
-
-    @media (min-width: 768px) {
-      main { padding: 60px 20px 100px; }
+    .mark{
+      display:flex; gap:10px; align-items:center;
+      letter-spacing:.06em; text-transform:uppercase; font-size:12px; color:var(--muted);
     }
-
-    section { margin-bottom: 56px; }
-
-    .section-label {
+    .dot{width:10px; height:10px; border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 0 0 4px rgba(124,92,255,.12);
+    }
+    .pill{
+      border:1px solid var(--line); background:rgba(15,22,32,.55);
+      padding:10px 12px; border-radius:999px; color:var(--muted); font-size:13px;
+    }
+    h1{
+      font-size:44px; margin:0 0 10px; line-height:1.1;
+      letter-spacing:-.02em;
+    }
+    .sub{
+      max-width:720px; color:var(--muted); font-size:18px; margin:0 0 26px;
+    }
+    .pipe{
+      display:flex; flex-wrap:wrap; gap:10px; margin:20px 0 30px;
+      font-weight:600;
+    }
+    .chip{
+      border:1px solid var(--line);
+      background:rgba(15,22,32,.7);
+      padding:10px 12px;
+      border-radius:14px;
+      font-size:14px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+    .card{
+      grid-column: span 12;
+      border:1px solid var(--line);
+      background:rgba(15,22,32,.65);
+      border-radius:18px;
+      padding:18px 18px;
+      box-shadow:0 12px 28px rgba(0,0,0,.22);
+    }
+    @media (min-width: 860px){
+      .card.half{ grid-column: span 6; }
+      .card.third{ grid-column: span 4; }
+    }
+    .label{
+      font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em;
+      margin:0 0 8px;
+    }
+    .card h2{margin:0 0 10px; font-size:18px;}
+    ul{margin:10px 0 0 18px; color:var(--text);}
+    li{margin:8px 0; color:var(--muted);}
+    li strong{color:var(--text); font-weight:650;}
+    .ritual{
+      border:1px dashed rgba(124,92,255,.55);
+      background:linear-gradient(180deg, rgba(124,92,255,.12), rgba(15,22,32,.65));
+    }
+    .bigline{
+      font-size:22px; font-weight:700; margin:8px 0 10px;
+      letter-spacing:-.01em;
+    }
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+    a.btn{
+      display:inline-block; text-decoration:none; font-weight:700;
+      padding:12px 14px; border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(15,22,32,.75);
+      color:var(--text);
+    }
+    a.btn.primary{
+      border-color: transparent;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#081018;
+    }
+    .fine{
+      margin-top:22px; color:var(--muted); font-size:13px; max-width:820px;
+    }
+    .footer{
+      margin-top:42px; padding-top:18px; border-top:1px solid rgba(34,48,66,.75);
+      color:var(--muted); font-size:12px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    h1, h2, h3, h4 {
-      margin: 0;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    h1 {
-      font-size: clamp(36px, 6vw, 46px);
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-
-    h2 { font-size: 24px; margin-bottom: 16px; }
-
-    p {
-      margin: 0 0 10px;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 15px;
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .hero { margin-bottom: 64px; }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(10, 10, 20, 0.9);
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 16px;
-    }
-
-    .eyebrow-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 10px rgba(245, 182, 76, 0.7);
-    }
-
-    .hero-subtitle {
-      font-size: 18px;
-      max-width: 600px;
-      margin-bottom: 16px;
-    }
-
-    .hero-tagline {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 580px;
-    }
-
-    .hero-actions {
-      margin-top: 24px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 500;
-      border: 1px solid transparent;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #f5b64c, #f58a4c);
-      color: #1b140a;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 26px rgba(245, 182, 76, 0.25);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7), 0 0 32px rgba(245, 182, 76, 0.35);
-    }
-
-    .btn-secondary {
-      border-color: var(--border-subtle);
-      background: rgba(10, 10, 20, 0.8);
+      background: rgba(0,0,0,.22);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(34,48,66,.7);
       color: var(--text);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--accent);
-      background: rgba(10, 10, 20, 0.95);
-    }
-
-    .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-
-    @media (min-width: 768px) {
-      .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-
-    .card {
-      padding: 18px 18px 16px;
-      border-radius: 14px;
-      border: 1px solid var(--border-subtle);
-      background: linear-gradient(145deg, #080811, #050509);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-    }
-
-    .footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border-subtle);
-      font-size: 12px;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
     }
   </style>
 </head>
-
 <body>
-  <main>
-
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="eyebrow">
-        <span class="eyebrow-dot"></span>
-        <span>Cognitive OS</span>
+  <div class="wrap">
+    <div class="top">
+      <div class="mark">
+        <span class="dot"></span>
+        <span>Snazzelpazz</span>
+        <span style="opacity:.65">/</span>
+        <span>Canonization</span>
       </div>
+      <div class="pill">Owned authority. No borrowed masks.</div>
+    </div>
 
-      <h1>Allpath</h1>
-      <p class="hero-subtitle">Cognitive OS for humans under pressure.</p>
+    <h1>I run a pipe.</h1>
+    <p class="sub">
+      Not marketing. Not funnels. Not scripts.<br>
+      <strong>Signal → Resonance → Submission → Transformation → Payment.</strong><br>
+      If that sentence lands, you already know what to do.
+    </p>
 
-      <p class="hero-tagline">
-        In today’s fast-paced environment, constant noise, uncertainty, and AI-driven complexity distort human judgment. Allpath provides a stable cognitive operating system for making clear decisions when the stakes are high.
-      </p>
+    <div class="pipe" aria-label="Pipeline">
+      <div class="chip">Signal</div>
+      <div class="chip">Resonance</div>
+      <div class="chip">Submission</div>
+      <div class="chip">Transformation</div>
+      <div class="chip">Payment</div>
+    </div>
 
-      <div class="hero-actions">
-        <a href="Allpath Cognitive OS.pdf" class="btn btn-primary" target="_blank" rel="noopener">
-          View Pitch Deck (PDF)
-        </a>
-        <a href="#contact" class="btn btn-secondary">Early Adopter & Inquiries</a>
-      </div>
-    </section>
-
-    <!-- PROBLEM -->
-    <section id="problem">
-      <div class="section-label">The Problem</div>
-      <div class="grid grid-2">
-        <div>
-          <h2>Judgment under pressure is breaking</h2>
-          <p>
-            Noise and uncertainty distort perception. AI adds complexity faster than humans can adapt. High-stakes decisions are being made inside unstable cognitive conditions.
-          </p>
-          <p>
-            Stress, urgency, and conflicting signals make clarity difficult at the exact moments where clarity matters most.
-          </p>
-        </div>
-        <div class="card">
-          <p>
-            The result: overreaction, hesitation, decision fatigue, and misalignment.
-          </p>
-          <p>
-            Allpath exists to stabilize that environment.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- OPPORTUNITY -->
-    <section id="opportunity">
-      <div class="section-label">The Opportunity</div>
-      <div class="grid grid-2">
-        <div>
-          <h2>Cognitive clarity as infrastructure</h2>
-          <p>
-            Organizations need a reliable way to improve decision quality, reduce overload, and stabilize teams under pressure.
-          </p>
-          <p>
-            Allpath treats human clarity and judgment as first-class infrastructure — not a side effect of “trying harder.”
-          </p>
-        </div>
-        <div class="card">
-          <p>
-            In a world shaped by AI and accelerating complexity, cognitive clarity is becoming essential infrastructure.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHAT ALLPATH IS -->
-    <section id="what">
-      <div class="section-label">What Allpath Is</div>
-      <div class="grid grid-2">
-        <div>
-          <h2>A cognitive OS for humans under pressure</h2>
-          <p>
-            Allpath enhances clarity and decision-making under pressure by providing a stable, repeatable structure for navigating complex challenges.
-          </p>
-        </div>
-        <div class="card">
-          <p>
-            Instead of asking people to “rise to the occasion,” Allpath creates a thinking environment where clarity becomes more likely — even when conditions are not.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SUBSYSTEMS -->
-    <section id="subsystems">
-      <div class="section-label">The Three Subsystems</div>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Angel — Staying Grounded</h3>
-          <p>
-            Clarifies facts, separates assumptions, and centers individuals under stress. Promotes clarity over panic.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Devil — Spotting Distortions</h3>
-          <p>
-            Identifies blind spots, challenges narratives, and flags biases. Prevents mental traps and self-sabotage.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Mariner — Choosing Direction</h3>
-          <p>
-            Lays out options, evaluates consequences, and aligns decisions with goals. Supports purposeful movement in turbulent environments.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section id="how">
-      <div class="section-label">How It Works</div>
-      <div class="grid grid-2">
-        <div>
-          <h2>A simple 5-step process</h2>
-          <ul>
-            <li><strong>1. Enter the situation.</strong> Define what’s happening and what’s at stake.</li>
-            <li><strong>2. Ground with Angel.</strong> Clarify facts and stabilize perspective.</li>
-            <li><strong>3. Expose distortions with Devil.</strong> Surface biases and blind spots.</li>
-            <li><strong>4. Navigate with Mariner.</strong> Explore options and align with goals.</li>
-            <li><strong>5. Close the loop.</strong> Review outcomes to refine future judgment.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <p>
-            The goal is not perfection — it’s reliable clarity under load.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- AUDIENCE -->
-    <section id="audience">
-      <div class="section-label">Target Audience</div>
-      <div class="card">
-        <h2>Built for humans in chaotic environments</h2>
-        <p>
-          Allpath is designed for founders, executives, crisis leads, and knowledge workers in AI-heavy sectors who must make decisions with real consequences under pressure.
+    <div class="grid">
+      <div class="card third">
+        <div class="label">Forge</div>
+        <h2>Signal, not product.</h2>
+        <p style="margin:0;color:var(--muted)">
+          I emit raw mythic ore: paradoxes, riffs, diagrams, mini-systems.
+          No polishing in the Forge.
         </p>
       </div>
-    </section>
 
-    <!-- BENEFITS -->
-    <section id="benefits">
-      <div class="section-label">Benefits</div>
-      <div class="grid grid-2">
-        <div>
-          <h2>What users experience</h2>
-          <ul>
-            <li>Reduced reactivity</li>
-            <li>Clearer thinking</li>
-            <li>More confident decisions</li>
-            <li>Better alignment</li>
-            <li>Stronger follow-through</li>
-          </ul>
-        </div>
-        <div class="card">
-          <p>
-            Allpath turns cognitive stability into a repeatable practice.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY NOW -->
-    <section id="why-now">
-      <div class="section-label">Why Now</div>
-      <div class="card">
-        <h2>The acceleration moment</h2>
-        <p>
-          The world is accelerating. Cognitive overload is rising. AI increases complexity faster than humans can adapt.
-        </p>
-        <p>
-          Stable judgment is becoming essential infrastructure. Allpath is built for this moment.
+      <div class="card third">
+        <div class="label">Distill</div>
+        <h2>Clarity without losing strangeness.</h2>
+        <p style="margin:0;color:var(--muted)">
+          I turn chaos into legible structure—still alive, still you.
         </p>
       </div>
-    </section>
 
-    <!-- VISION -->
-    <section id="vision">
-      <div class="section-label">Vision</div>
-      <div class="card">
-        <h2>Cognitive stability at scale</h2>
-        <p>
-          Allpath aims to create a stable foundation for human judgment in any environment, enabling seamless human–AI co-navigation.
-        </p>
-        <p>
-          The long-term vision is cognitive stability at scale: teams and individuals who maintain clarity even as environments become more complex.
+      <div class="card third">
+        <div class="label">Canonize</div>
+        <h2>Transformation is the proof.</h2>
+        <p style="margin:0;color:var(--muted)">
+          This is the service: coherent systems, clean artifacts, finished law.
         </p>
       </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="section-label">Get in Touch</div>
-      <div class="card">
-        <h2>Engage with Allpath</h2>
+      <div class="card half">
+        <div class="label">What you send</div>
+        <h2>Raw material welcome.</h2>
+        <ul>
+          <li><strong>Worldbuilding / lore</strong> that’s vivid but messy</li>
+          <li><strong>Brand voice docs</strong> that don’t quite cohere</li>
+          <li><strong>Prompts / AI drafts</strong> that need structure</li>
+          <li><strong>Half-formed visions</strong> you can’t stabilize alone</li>
+          <li><strong>Systems</strong> that feel real but won’t hold shape</li>
+        </ul>
+      </div>
 
-        <p><strong>Early Adopter Info</strong><br>
-          <a href="https://snazzelpazz.github.io" target="_blank" rel="noopener">snazzelpazz.github.io</a>
+      <div class="card half">
+        <div class="label">What you receive</div>
+        <h2>A canonized version of your thing.</h2>
+        <ul>
+          <li><strong>Clarity</strong> (what it is, what it isn’t)</li>
+          <li><strong>Structure</strong> (sections, rules, components)</li>
+          <li><strong>Mythic coherence</strong> (tone, symbolism, consistency)</li>
+          <li><strong>Usable artifacts</strong> (1-pagers, prompts, docs, frameworks)</li>
+          <li><strong>Next steps</strong> that don’t drift</li>
+        </ul>
+      </div>
+
+      <div class="card ritual">
+        <div class="label">The ritual</div>
+        <div class="bigline">Send me a piece. I’ll show you what it can become.</div>
+        <p style="margin:0;color:var(--muted)">
+          Keep it simple: paste text, attach a doc, or describe the thing in a paragraph.
+          If it’s real, the transformation will speak for itself.
         </p>
 
-        <p><strong>Development Inquiries</strong><br>
-          <a href="tel:+19803129121">+1 (980) 312‑9121</a>
-        </p>
-
-        <p><strong>General Contact</strong><br>
-          <a href="mailto:Snazzelpazz@gmail.com">Snazzelpazz@gmail.com</a>
-        </p>
-
-        <div class="hero-actions" style="margin-top: 16px;">
-          <a href="Allpath Cognitive OS.pdf" class="btn btn-primary" target="_blank" rel="noopener">
-            View Pitch Deck (PDF)
+        <div class="btnrow">
+          <!-- Replace the email address below with your preferred inbox -->
+          <a class="btn primary" href="mailto:stephengregorydowswell@gmail.com?subject=Canonization%20Request%20—%20Send%20me%20a%20piece&body=Paste%20your%20piece%20here%20(or%20link%20it).%0A%0AWhat%20do%20you%20want%20it%20to%20become%3F%0A%0AAny%20constraints%20(deadline%2C%20tone%2C%20format)%3F">
+            Send me a piece
           </a>
+
+          <!-- Optional: swap this for your Discord/Calendly/Google Form later -->
+          <a class="btn" href="#pricing">Pricing bands</a>
+          <a class="btn" href="#notes">How to send cleanly</a>
         </div>
+
+        <p class="fine" id="pricing">
+          <strong>Pricing bands (simple truth):</strong><br>
+          <code>$15–25</code> short artifact (100–800 words) ·
+          <code>$50–100</code> medium doc (800–3,000) ·
+          <code>$200+</code> full system pass (3,000–10,000+)
+          <br><br>
+          If money is tight, say so. I can tell you what’s realistic without the guilt-trip theater.
+        </p>
+
+        <p class="fine" id="notes">
+          <strong>How to send cleanly:</strong><br>
+          1) Paste the piece or link it. 2) Tell me what “done” looks like. 3) Mention any constraints.
+          If you have none, say none. That’s valid.
+        </p>
       </div>
-    </section>
+    </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div>Cognitive OS for humans under pressure · Allpath.</div>
-      <div><a href="#top">Back to top</a></div>
-    </footer>
+    <div class="footer">
+      <div>© <span id="y"></span> Snazzelpazz</div>
+      <div>Built to filter: resonance only.</div>
+    </div>
+  </div>
 
-  </main>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
