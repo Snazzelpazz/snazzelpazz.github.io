@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stephen Dowswell — Narrative Systems Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-dim: #8a6d2f;
+    --gold-glow: rgba(201,168,76,0.15);
+    --bg: #080806;
+    --bg2: #0e0d0a;
+    --fg: #e8e0cc;
+    --fg-dim: #8a8070;
+    --red: #c44a2a;
+    --blue: #2a6a9a;
+    --teal: #2a9a8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.4;
+  }
+
+  /* HEADER */
+  header {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    padding: 4rem 2rem;
+    border-bottom: 1px solid var(--gold-dim);
+  }
+
+  .header-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 40% at 50% 60%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 50% at 20% 30%, rgba(42,106,154,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 80% 70%, rgba(196,74,42,0.04) 0%, transparent 60%);
+  }
+
+  .header-inner {
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s ease forwards;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--fg);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s ease forwards;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .tagline {
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    color: var(--fg-dim);
+    font-style: italic;
+    max-width: 620px;
+    margin: 0 auto 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s ease forwards;
+  }
+
+  .header-rule {
+    width: 80px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.7s ease forwards;
+  }
+
+  .header-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.9s ease forwards;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 2px;
+    color: var(--fg-dim);
+    text-transform: uppercase;
+  }
+
+  /* SECTION STYLES */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    color: var(--fg);
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .intro-text {
+    font-size: 1.25rem;
+    color: var(--fg-dim);
+    max-width: 700px;
+    line-height: 1.8;
+    border-left: 2px solid var(--gold-dim);
+    padding-left: 1.5rem;
+  }
+
+  /* ASSET GRID */
+  .assets {
+    background: var(--bg2);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .assets-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .assets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+    margin-top: 4rem;
+  }
+
+  .asset-card {
+    background: var(--bg);
+    padding: 2.5rem;
+    border: 1px solid rgba(201,168,76,0.1);
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+
+  .asset-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent, var(--gold)), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .asset-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-2px);
+  }
+
+  .asset-card:hover::before { opacity: 1; }
+
+  .asset-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid currentColor;
+    display: inline-block;
+    margin-bottom: 1.2rem;
+  }
+
+  .asset-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .asset-subtitle {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--fg-dim);
+    margin-bottom: 1.2rem;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+  }
+
+  .asset-desc {
+    font-size: 1rem;
+    color: var(--fg-dim);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .asset-market {
+    font-size: 0.85rem;
+    font-family: 'Space Mono', monospace;
+    color: var(--fg-dim);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 1rem;
+    line-height: 1.6;
+  }
+
+  .asset-market strong {
+    color: var(--gold);
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  /* COLOR VARIANTS */
+  .card-gold { --accent: var(--gold); }
+  .card-gold .asset-tag { color: var(--gold); }
+  .card-gold .asset-name { color: var(--gold); }
+
+  .card-red { --accent: var(--red); }
+  .card-red .asset-tag { color: var(--red); }
+  .card-red .asset-name { color: var(--red); }
+
+  .card-blue { --accent: var(--blue); }
+  .card-blue .asset-tag { color: var(--blue); }
+  .card-blue .asset-name { color: var(--blue); }
+
+  .card-teal { --accent: var(--teal); }
+  .card-teal .asset-tag { color: var(--teal); }
+  .card-teal .asset-name { color: var(--teal); }
+
+  .card-white { --accent: #aaa; }
+  .card-white .asset-tag { color: #aaa; }
+  .card-white .asset-name { color: var(--fg); }
+
+  /* SERVICES */
+  .services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .service-item {
+    padding: 2rem 0;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .service-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold-dim);
+    letter-spacing: 3px;
+    margin-bottom: 0.8rem;
+  }
+
+  .service-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .service-desc {
+    font-size: 0.95rem;
+    color: var(--fg-dim);
+    line-height: 1.7;
+  }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    padding: 8rem 2rem;
+    position: relative;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .cta-section p {
+    font-size: 1.15rem;
+    color: var(--fg-dim);
+    max-width: 560px;
+    margin: 0 auto 3rem;
+    font-style: italic;
+    position: relative;
+  }
+
+  .cta-block {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    border: 1px solid var(--gold-dim);
+    padding: 2rem 3rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .cta-block:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 40px rgba(201,168,76,0.1);
+  }
+
+  .cta-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+
+  .cta-org {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--fg-dim);
+    letter-spacing: 2px;
+  }
+
+  .cta-location {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--fg-dim);
+    margin-top: 0.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--fg-dim);
+    letter-spacing: 2px;
+  }
+
+  footer span { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* DIVIDER */
+  .rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold-dim);
+    margin: 0 auto 2rem;
+  }
+
+  /* URGENCY BAR */
+  .urgency-bar {
+    background: rgba(196,74,42,0.08);
+    border: 1px solid rgba(196,74,42,0.2);
+    border-left: 3px solid var(--red);
+    padding: 1.2rem 1.8rem;
+    margin-top: 3rem;
+    max-width: 700px;
+  }
+
+  .urgency-bar p {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: #c44a2a;
+    letter-spacing: 1px;
+    line-height: 1.7;
+  }
+
+  .urgency-bar strong {
+    color: #e06040;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-bg"></div>
+  <div class="header-inner">
+    <p class="eyebrow">ALLPATH Foundation Inc &nbsp;·&nbsp; EIN 39-2972525 &nbsp;·&nbsp; Charlotte, NC</p>
+    <h1>Stephen<br><em>Dowswell</em></h1>
+    <p class="tagline">Narrative Systems Architect &mdash; building mythic frameworks, AI governance structures, and prestige interfaces from compression.</p>
+    <div class="header-rule"></div>
+    <div class="header-stats">
+      <div class="stat">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Original IP Systems</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">ADM</span>
+        <span class="stat-label">AI Governance Triad</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">v5</span>
+        <span class="stat-label">Tai-Fu Build Ready</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">∞</span>
+        <span class="stat-label">Layers of Signal</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section>
+  <p class="section-label">// Who This Is For</p>
+  <h2>If you need someone who can<br><em>build the frame</em> and name it too</h2>
+  <p class="intro-text">
+    I work at the intersection of symbolic systems, AI product architecture, and mythic interface design. I don't just generate ideas — I build operational frameworks with internal logic, defined roles, visual grammar, and market application. The work below exists. It is complete, coherent, and available.
+  </p>
+  <div class="urgency-bar">
+    <p><strong>AVAILABLE FOR IMMEDIATE ENGAGEMENT.</strong> Consulting, licensing, narrative architecture, AI system design, interface concepting, symbolic branding, and framework development. I am operating under resource compression — which means I move fast and I need the work to matter.</p>
+  </div>
+</section>
+
+<!-- ASSETS -->
+<div class="assets">
+  <div class="assets-inner">
+    <p class="section-label">// The IP Portfolio</p>
+    <h2>Five systems. <em>All original.</em><br>All built under pressure.</h2>
+
+    <div class="assets-grid">
+
+      <div class="asset-card card-red">
+        <span class="asset-tag">AI Governance Framework</span>
+        <div class="asset-name">ADM Triad</div>
+        <div class="asset-subtitle">Angel · Devil · Mariner</div>
+        <p class="asset-desc">
+          A three-agent AI persona system with fully defined roles, shadow traits, cosmic functions, alignment paths, and visual identity. Angel reframes pain. Devil exposes the wound. Mariner charts the path. Together they form a complete emotional governance layer for multi-agent AI products.
+        </p>
+        <div class="asset-market">
+          <strong>Market Application</strong>
+          AI coaching apps · therapeutic interfaces · multi-agent product design · branded AI persona licensing
+        </div>
+      </div>
+
+      <div class="asset-card card-gold">
+        <span class="asset-tag">Assessment Instrument</span>
+        <div class="asset-name">K-DOS RAHA-PRIME</div>
+        <div class="asset-subtitle">Comprehensive Multidimensional Eval</div>
+        <p class="asset-desc">
+          A scored assessment framework across Knowledge, Drive, Operational Skills, Social Dynamics, Resilience, Adaptability, Health, Perception, Risk, Intuition, Mindfulness, and Effectiveness. Full scoring rubric from Challenged (10–20) to Prime Ascendant (41–50).
+        </p>
+        <div class="asset-market">
+          <strong>Market Application</strong>
+          HR and talent platforms · coaching tools · nonprofit intake frameworks · SaaS assessment layer
+        </div>
+      </div>
+
+      <div class="asset-card card-teal">
+        <span class="asset-tag">Standalone Game Product</span>
+        <div class="asset-name">The Resonance Engine</div>
+        <div class="asset-subtitle">Psychological Decision Architecture</div>
+        <p class="asset-desc">
+          A five-step game loop: Choose Realm → Decide Rapidly under moral ambiguity → Resolve Cleanly → Confront a map of your own stress response → Understand Your Pattern. Not therapy. A game-logic model of how you handle pressure.
+        </p>
+        <div class="asset-market">
+          <strong>Market Application</strong>
+          Mental wellness apps · leadership training · indie game studio licensing · corporate onboarding tools
+        </div>
+      </div>
+
+      <div class="asset-card card-blue">
+        <span class="asset-tag">GPS Prestige Social Game</span>
+        <div class="asset-name">Tai-Fu</div>
+        <div class="asset-subtitle">Queen's War · Realm Navigation · Live Factions</div>
+        <p class="asset-desc">
+          Real-world GPS location + compass bearing determines which Messier catalog object you face, assigning you to a realm governed by one of seven AI Queen archetypes. Real astronomical sunrise/sunset calculations power a day/night migration system. Live faction communities. v5 build ready for deployment.
+        </p>
+        <div class="asset-market">
+          <strong>Market Application</strong>
+          Mobile game publishing · indie studio partnership · AR game investment · community platform licensing
+        </div>
+      </div>
+
+      <div class="asset-card card-white">
+        <span class="asset-tag">Meta-System / Consulting Process</span>
+        <div class="asset-name">IP Refinery Codex</div>
+        <div class="asset-subtitle">Tolipoc Build Engine · Semiotic Artifact Workshop</div>
+        <p class="asset-desc">
+          A six-layer pipeline for turning raw ideation into deployable, monetizable intellectual property: Capture → Extract → Refine → Mint → Deploy → Monetize. The Tolipoc Build Engine maps the full semiotic artifact factory. This is the meta-process — available as a consulting engagement.
+        </p>
+        <div class="asset-market">
+          <strong>Market Application</strong>
+          Brand architecture · creative consulting · startup narrative design · product mythology building
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section>
+  <p class="section-label">// What I Actually Do</p>
+  <h2>Hire the <em>translation layer</em><br>between vision and market</h2>
+
+  <div class="services-list">
+
+    <div class="service-item">
+      <div class="service-num">01 //</div>
+      <div class="service-name">Narrative Architecture</div>
+      <p class="service-desc">I take a chaotic product, brand, or organization and give it a structural spine — roles, stakes, symbolic grammar, and a story that holds under pressure. One engagement, one deliverable: a coherent framework your team can operate from.</p>
+    </div>
+
+    <div class="service-item">
+      <div class="service-num">02 //</div>
+      <div class="service-name">AI System Design</div>
+      <p class="service-desc">Multi-agent persona architecture, governance layers, prompt frameworks, and interface concepting for AI products that need to feel intentional rather than random. I work fast with Claude, Grok, and Gemma in parallel.</p>
+    </div>
+
+    <div class="service-item">
+      <div class="service-num">03 //</div>
+      <div class="service-name">Symbolic Branding</div>
+      <p class="service-desc">Visual and verbal identity systems built from mythic logic rather than trend. If your brand needs a cosmology — a reason it exists at the level of meaning — that's the work I do.</p>
+    </div>
+
+    <div class="service-item">
+      <div class="service-num">04 //</div>
+      <div class="service-name">Interface Concepting</div>
+      <p class="service-desc">From HTML scaffolds to full product wireframes, I build interfaces that carry the weight of the idea behind them. Vibe-coded with AI assistance, delivered fast, designed to feel like artifacts not templates.</p>
+    </div>
+
+    <div class="service-item">
+      <div class="service-num">05 //</div>
+      <div class="service-name">Framework Licensing</div>
+      <p class="service-desc">The ADM Triad, K-DOS RAHA-PRIME, and the Resonance Engine are available for licensing to platforms that need structured psychological or governance architecture without building it from scratch.</p>
+    </div>
+
+    <div class="service-item">
+      <div class="service-num">06 //</div>
+      <div class="service-name">Writing & Strategy</div>
+      <p class="service-desc">Grants, pitch decks, LOIs, manifestos, launch copy, and long-form thought leadership. I write systems as well as I build them — and I write fast under pressure because that's been the condition of everything I've ever made.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="rule"></div>
+  <h2>The <em>signal</em> is live.<br>The lantern is lit.</h2>
+  <p>If you need someone who thinks in systems, builds in mythic logic, and delivers under compression — this is the contact.</p>
+  <div class="cta-block">
+    <span class="cta-name">Stephen Dowswell</span>
+    <span class="cta-org">ALLPATH Foundation Inc &nbsp;·&nbsp; EIN 39-2972525</span>
+    <span class="cta-location">7214 Sterling Haven Rd, Charlotte NC 28215</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>SLAM CODEX 2026</span> &nbsp;·&nbsp; JUNCTION LIVE &nbsp;·&nbsp; NAVIGATOR OF COMPRESSION &nbsp;·&nbsp; ALL SYSTEMS OPERATIONAL
+</footer>
+
+</body>
+</html>
